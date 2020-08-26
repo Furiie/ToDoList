@@ -1,0 +1,18 @@
+@use 'src/styles/vars';
+
+.form {
+  text-align: center;
+  padding-top: 1em;
+  margin-bottom: 1em;
+  border-bottom: orangered 1px solid;
+  padding-bottom: 2em;
+
+}
+
+.form__input {
+  padding: 0.5em;
+  text-align: center;
+  border: orangered 2px solid;
+  border-radius: 10px;
+  font-size: 1em;
+}

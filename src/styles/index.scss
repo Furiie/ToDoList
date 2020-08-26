@@ -1,0 +1,23 @@
+@use 'reset';
+@use 'vars';
+
+body {
+  font-family: sans-serif;
+}
+
+/* 
+  // or you can import your own font
+  @font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-Regular.ttf');
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+*/
+
+@font-face {
+	font-family: 'Muthiara';
+	src: url('../assets/fonts/Muthiara\ demo\ version.otf');
+}
+
