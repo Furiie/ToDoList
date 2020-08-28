@@ -32,7 +32,7 @@ const Task = ({ id, label, done, onChangeTaskDone }) => {
 Task.propTypes = {
   id: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
-  done: PropTypes.bool.isRequired,
+  done: PropTypes.string.isRequired,
   onChangeTaskDone: PropTypes.func.isRequired,
 };
 

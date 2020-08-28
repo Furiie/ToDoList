@@ -17,6 +17,7 @@ class Todolist extends React.Component {
     taskValue: '',
   };
 
+  // Charge les taches présente dans la BDD
   componentDidMount() {
     axios.get(`http://localhost/Perso/backend-todolist/public/taches`)
       .then(res => {
@@ -45,7 +46,7 @@ class Todolist extends React.Component {
     const newTask = {
       id: maxId + 1,
       label: taskValue,
-      done: false,
+      done: 0,
     };
 
     // on vient déverser le contenu de tasks dans un nouveau et on insère directement la nouvelle tâche
@@ -54,6 +55,12 @@ class Todolist extends React.Component {
     // en 2 temps
     // const newTasks = [...tasks];
     // newTasks.push(newTask);
+    axios.post(`http://localhost/Perso/backend-todolist/public/taches`, {newTask})
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+
 
     this.setState({
       tasks: newTasks,
