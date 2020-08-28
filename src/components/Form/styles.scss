@@ -6,6 +6,9 @@
   margin-bottom: 1em;
   border-bottom: orangered 1px solid;
   padding-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
 
@@ -14,5 +17,17 @@
   text-align: center;
   border: orangered 2px solid;
   border-radius: 10px;
+  font-size: 1em;
+}
+
+.form__button {
+  padding: 0.5em;
+  padding-left: 5px;
+  background-color: orangered;
+  border: none;
+  margin-top: 1em;
+  color: white;
+  font-weight: bold;
+  border-radius: 11px;
   font-size: 1em;
 }

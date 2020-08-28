@@ -1,5 +1,7 @@
 import React from 'react';
 
+import axios from 'axios';
+
 import './styles.scss';
 
 import Counter from 'src/components/Counter';
@@ -7,13 +9,21 @@ import Form from 'src/components/Form';
 import Tasks from 'src/components/Tasks';
 import Title from 'src/components/Title';
 
-import tasksData from 'src/data/tasks';
+//import tasksData from 'src/data/tasks';
 
 class Todolist extends React.Component {
   state = {
-    tasks: tasksData,
+    tasks: [],
     taskValue: '',
   };
+
+  componentDidMount() {
+    axios.get(`http://localhost/Perso/backend-todolist/public/taches`)
+      .then(res => {
+        const tasks = res.data;
+        this.setState({ tasks });
+      })
+  }
 
   setTaskValue = (value) => {
     this.setState({ taskValue: value });

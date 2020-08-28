@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    label: 'Coder une todolist en impératif',
+    label: 'Coder une todolist',
     done: true,
   },
   {

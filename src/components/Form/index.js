@@ -24,6 +24,11 @@ const Form = ({ taskValue, onChangeTaskValue, onSubmitForm }) => {
         type="text"
         placeholder="Ajouter une tâche"
       />
+      <input
+        type="submit"
+        value="Envoyer"
+        className="form__button"
+      />
     </form>
   );
 };
