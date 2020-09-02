@@ -53,6 +53,7 @@ class Todolist extends React.Component {
     // en 2 temps
     // const newTasks = [...tasks];
     // newTasks.push(newTask);
+    //! J'envoie la nouvelle tache dans l' API
     axios.post(`http://localhost/Perso/backend-todolist/public/taches`, newTask)
     .then(res => {
       console.log(res);
@@ -74,6 +75,11 @@ class Todolist extends React.Component {
     const newTasks = tasks.map((task) => {
       if (task.id === taskId) {
         task.done = !task.done;
+        //! Modification dans la BDD :D 
+        axios.put(`http://localhost/Perso/backend-todolist/public/taches/${taskId}`, task)
+        .then(res => {
+          console.log(res);
+        });
       }
 
       return task;
