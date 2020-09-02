@@ -8,8 +8,9 @@ import Counter from 'src/components/Counter';
 import Form from 'src/components/Form';
 import Tasks from 'src/components/Tasks';
 import Title from 'src/components/Title';
+import Delete from 'src/components/Delete';
 
-//import tasksData from 'src/data/tasks';
+// import tasksData from 'src/data/tasks';
 
 class Todolist extends React.Component {
   state = {
@@ -50,17 +51,13 @@ class Todolist extends React.Component {
     // on vient déverser le contenu de tasks dans un nouveau et on insère directement la nouvelle tâche
     const newTasks = [...tasks, newTask];
 
-    // en 2 temps
-    // const newTasks = [...tasks];
-    // newTasks.push(newTask);
     //! J'envoie la nouvelle tache dans l' API
     axios.post(`http://localhost/Perso/backend-todolist/public/taches`, newTask)
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-      console.log(newTask);
-    });
-
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        console.log(newTask);
+      });
 
     this.setState({
       tasks: newTasks,
@@ -75,17 +72,26 @@ class Todolist extends React.Component {
     const newTasks = tasks.map((task) => {
       if (task.id === taskId) {
         task.done = !task.done;
-        //! Modification dans la BDD :D 
+        //! Modification dans la BDD :D
         axios.put(`http://localhost/Perso/backend-todolist/public/taches/${taskId}`, task)
-        .then(res => {
-          console.log(res);
-        });
+          .then(res => {
+            console.log(res);
+          });
       }
-
       return task;
     });
 
     this.setState({ tasks: newTasks });
+  };
+
+  // Je veux que ma liste de tasks = vide quand j'appuie sur le bouton
+  deleteTask = () => {
+    const { tasks } = this.state;
+    const emptyTask = tasks.splice(0, 0);
+    console.log(emptyTask);
+    
+
+    this.setState({ tasks: emptyTask });
   };
 
   render() {
@@ -93,9 +99,9 @@ class Todolist extends React.Component {
 
     // const undoneTasks = tasksData.filter((task) => !task.done).length;
     let undoneTasks = tasks.filter((task) => !task.done);
-    // on peut réassigner la valeur de undoneTask directement dans undoneTasks
-    undoneTasks = undoneTasks.length;
 
+    // Nombre de taches pas finis
+    undoneTasks = undoneTasks.length;
 
     return (
       <div className="main">
@@ -110,6 +116,9 @@ class Todolist extends React.Component {
           <Tasks
             tasks={tasks}
             onChangeTaskDone={this.changeTaskDone}
+          />
+          <Delete
+            onsubmitClick={this.deleteTask}
           />
         </div>
        
