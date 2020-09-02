@@ -33,20 +33,18 @@ class Todolist extends React.Component {
   addTask = () => {
     const { tasks, taskValue } = this.state;
 
-     // si la valeur de taskValue ne contient qu'une chaine vide, alors on sort au plus vite de la fonction avec return
-     if (taskValue === '') {
+    // si la valeur de taskValue ne contient qu'une chaine vide, alors on sort au plus vite de la fonction avec return
+    if (taskValue === '') {
       return;
     }
 
     const ids = tasks.map((task) => task.id);
     const maxId = Math.max(...ids);
 
-
-
     const newTask = {
-      id: maxId + 1,
       label: taskValue,
       done: 0,
+      id: maxId + 1,
     };
 
     // on vient déverser le contenu de tasks dans un nouveau et on insère directement la nouvelle tâche
@@ -55,11 +53,12 @@ class Todolist extends React.Component {
     // en 2 temps
     // const newTasks = [...tasks];
     // newTasks.push(newTask);
-    axios.post(`http://localhost/Perso/backend-todolist/public/taches`, {newTask})
+    axios.post(`http://localhost/Perso/backend-todolist/public/taches`, newTask)
     .then(res => {
       console.log(res);
       console.log(res.data);
-    })
+      console.log(newTask);
+    });
 
 
     this.setState({
