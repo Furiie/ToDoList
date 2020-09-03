@@ -20,7 +20,7 @@ class Todolist extends React.Component {
 
   // Charge les taches présente dans la BDD
   componentDidMount() {
-    axios.get(`http://localhost/Perso/backend-todolist/public/taches`)
+    axios.get(`http://localhost/React/todolist/back/public/taches`)
       .then(res => {
         const tasks = res.data;
         this.setState({ tasks });
@@ -52,7 +52,7 @@ class Todolist extends React.Component {
     const newTasks = [...tasks, newTask];
 
     //! J'envoie la nouvelle tache dans l' API
-    axios.post(`http://localhost/Perso/backend-todolist/public/taches`, newTask)
+    axios.post(`http://localhost/React/todolist/back/public/taches`, newTask)
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -73,7 +73,7 @@ class Todolist extends React.Component {
       if (task.id === taskId) {
         task.done = !task.done;
         //! Modification dans la BDD :D
-        axios.put(`http://localhost/Perso/backend-todolist/public/taches/${taskId}`, task)
+        axios.put(`http://localhost/React/todolist/back/public/taches/${taskId}`, task)
           .then(res => {
             console.log(res);
           });
@@ -90,7 +90,7 @@ class Todolist extends React.Component {
     const emptyTask = tasks.splice(0, 0);
     // console.log(emptyTask);
 
-    axios.delete(`http://localhost/Perso/backend-todolist/public/taches`)
+    axios.delete(`http://localhost/React/todolist/back/public/taches`)
     .then(res => {
       console.log(res);
     });
@@ -125,7 +125,6 @@ class Todolist extends React.Component {
             onsubmitClick={this.deleteTask}
           />
         </div>
-       
       </div>
     );
   }
