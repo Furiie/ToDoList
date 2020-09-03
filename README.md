@@ -1,6 +1,7 @@
-# ToDoList
+# ToDoList Front + Back
 
-##Projet d'une TODOLIST: 
+## Projet d'une TODOLIST: 
+
 Front : ReactJS
 
 Back : Lumen (bébé Laravel) + Base de Données: MySQL 
