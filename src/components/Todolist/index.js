@@ -84,12 +84,16 @@ class Todolist extends React.Component {
     this.setState({ tasks: newTasks });
   };
 
-  // Je veux que ma liste de tasks = vide quand j'appuie sur le bouton
+  // Permet de supprimer la liste de tache
   deleteTask = () => {
     const { tasks } = this.state;
     const emptyTask = tasks.splice(0, 0);
-    console.log(emptyTask);
-    
+    // console.log(emptyTask);
+
+    axios.delete(`http://localhost/Perso/backend-todolist/public/taches`)
+    .then(res => {
+      console.log(res);
+    });
 
     this.setState({ tasks: emptyTask });
   };
